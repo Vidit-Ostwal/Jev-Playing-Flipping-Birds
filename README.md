@@ -19,6 +19,7 @@ Headless smoke test (Goal 1): a random agent plays one episode and writes `artif
 
 ```bash
 uv run python -m backend.smoke_env
+uv run python -m backend.smoke_state
 ```
 
 Later goals add:
