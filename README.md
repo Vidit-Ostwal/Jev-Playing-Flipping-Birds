@@ -4,17 +4,6 @@ Local demo: TypeSafe Jev plays Flappy Bird through `flappy-bird-gymnasium`. A br
 
 ![Live gameplay](docs/screenshots/gameplay.gif)
 
-<table>
-  <tr>
-    <td><img src="docs/screenshots/01-start.png" alt="Start screen" width="400"></td>
-    <td><img src="docs/screenshots/02-playing-jev.png" alt="Jev playing, with live call and probabilities" width="400"></td>
-  </tr>
-  <tr>
-    <td><img src="docs/screenshots/04-heuristic.png" alt="Heuristic agent playing" width="400"></td>
-    <td><img src="docs/screenshots/05-mobile.png" alt="Mobile layout" width="400"></td>
-  </tr>
-</table>
-
 ## Setup
 
 ```bash
