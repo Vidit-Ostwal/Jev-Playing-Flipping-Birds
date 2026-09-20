@@ -15,10 +15,15 @@ Put your TypeSafe early-access key in `.env` as `TYPESAFE_API_KEY` when you reac
 
 ## Run
 
-Not wired up yet. Later goals add:
+Headless smoke test (Goal 1): a random agent plays one episode and writes `artifacts/random_frame.png`.
 
-- a headless Gymnasium smoke script
-- `uvicorn backend.app:app --reload`
+```bash
+uv run python -m backend.smoke_env
+```
+
+Later goals add:
+
+- `uv run uvicorn backend.app:app --reload`
 - the spectator page at `http://127.0.0.1:8000`
 
 ## Layout
