@@ -4,6 +4,8 @@ Local demo: TypeSafe Jev plays Flappy Bird through `flappy-bird-gymnasium`. A br
 
 ![Live gameplay](docs/screenshots/gameplay.gif)
 
+Want to watch a full run, sound on, until the bird dies? [Watch Jev play live](docs/screenshots/jev-live-play.mov).
+
 ## Setup
 
 ```bash
@@ -42,6 +44,6 @@ Then open `http://127.0.0.1:8000`. Start / Pause / Reset, pick Random, Heuristic
 - `backend/smoke/` — headless smoke checks for the engine, state mapping, and web app in one place
 - `backend/play.py` — CLI to play one headless episode with a chosen agent
 - `frontend/` — live canvas, shouted call, telemetry
-- `docs/screenshots/` — README screenshots and gameplay gif
+- `docs/screenshots/` — README gameplay gif and a full live-play video with sound
 - `.env.example` — `TYPESAFE_API_KEY` and `OPENAI_API_KEY`
 - `pyproject.toml` / `uv.lock` — dependencies and locked versions
