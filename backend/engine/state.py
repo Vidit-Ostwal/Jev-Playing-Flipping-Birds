@@ -15,6 +15,8 @@ from __future__ import annotations
 
 from typing import Any, Mapping
 
+from backend.engine.physics import flap_effect
+
 OBS_SIZE = 12
 
 _PIPE_FIELDS = (
@@ -49,13 +51,14 @@ def observation_to_state(
     bird_y_minus_gap = named["bird_y"] - next_gap_center
 
     return {
-        "coordinates": "y grows downward; 0 is the top of the screen",
+        "coordinates": "y grows downward; 0 is the top of the screen. The bird never moves in x; pipes move toward it.",
         "normalized": normalized,
         "score": int(score),
         **named,
         "next_gap_center": next_gap_center,
         "bird_y_minus_next_gap_center": bird_y_minus_gap,
         "bird_is_below_next_gap_center": bird_y_minus_gap > 0,
+        "flap_effect": flap_effect(normalized=normalized),
     }
 
 

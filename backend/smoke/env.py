@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from backend.game import make_env, save_rgb_frame
+from backend.engine import make_env, save_rgb_frame
 
 FRAME_PATH = Path("artifacts/random_frame.png")
 

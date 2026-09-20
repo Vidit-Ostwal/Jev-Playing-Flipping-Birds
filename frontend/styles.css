@@ -1,0 +1,384 @@
+:root {
+  --sky: #4ec0ca;
+  --haze: #e9f6ce;
+  --pipe: #73bf2e;
+  --pipe-lip: #548c22;
+  --dirt: #ded895;
+  --dirt-edge: #c9b46a;
+  --bird: #f8c12c;
+  --shout: #e4452f;
+  --noop: #2f7cc2;
+  --warn: #c9861f;
+  --ink: #2a3d24;
+  --foam: #fff6d4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--sky);
+  color: var(--ink);
+  font-family: "Atkinson Hyperlegible", sans-serif;
+}
+
+.sky {
+  height: 100dvh;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  background:
+    linear-gradient(to bottom, #6fd4de 0%, var(--sky) 48%, #8dcea8 86%, var(--haze) 100%);
+}
+
+header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px 20px;
+  padding: 14px 22px 8px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+header p {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.78;
+}
+
+main {
+  display: grid;
+  grid-template-columns: auto minmax(240px, 1fr);
+  gap: 28px;
+  min-height: 0;
+  padding: 0 22px 12px;
+  max-width: 1120px;
+}
+
+.stage {
+  height: 100%;
+  min-height: 0;
+  width: fit-content;
+  display: grid;
+  grid-template-rows: 18px minmax(0, 1fr) 18px;
+  justify-self: start;
+}
+
+.pipe-lip {
+  background: var(--pipe-lip);
+}
+
+.viewport {
+  position: relative;
+  min-height: 0;
+  background: var(--pipe);
+  padding: 8px 10px;
+  display: flex;
+  justify-content: center;
+}
+
+#game {
+  display: block;
+  height: 100%;
+  width: auto;
+  aspect-ratio: 288 / 512;
+  background: var(--sky);
+  image-rendering: pixelated;
+}
+
+.overlay {
+  position: absolute;
+  inset: 8px 10px;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--ink) 48%, transparent);
+  color: var(--foam);
+}
+
+.overlay p {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.callout {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-top: 6px;
+}
+
+.score {
+  margin: 0;
+  font-size: 3.4rem;
+  font-weight: 700;
+  line-height: 0.9;
+  color: var(--bird);
+}
+
+.yell {
+  margin: 6px 0 18px;
+  min-height: 1.1em;
+  font-family: "Lilita One", sans-serif;
+  font-size: 2.4rem;
+  line-height: 0.9;
+  color: var(--ink);
+  transform-origin: left center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.yell.is-flap {
+  color: var(--shout);
+}
+
+.yell.is-noop {
+  color: var(--noop);
+}
+
+.yell.slam {
+  animation: slam 160ms ease-out;
+}
+
+@keyframes slam {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.meters {
+  display: grid;
+  gap: 9px;
+}
+
+.meters > div {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) 40px;
+  gap: 8px;
+  align-items: center;
+}
+
+.track {
+  height: 10px;
+  background: color-mix(in srgb, var(--pipe) 42%, var(--foam));
+}
+
+.track i {
+  display: block;
+  height: 100%;
+  width: 0;
+  transition: width 160ms ease-out;
+}
+
+#p-flap {
+  background: var(--shout);
+}
+
+#p-noop {
+  background: var(--noop);
+}
+
+.meta,
+.note,
+.logs,
+.physics {
+  font-size: 0.92rem;
+}
+
+.physics {
+  margin: 14px 0 0;
+  max-width: 36ch;
+  line-height: 1.35;
+}
+
+.meta {
+  margin: 16px 0 0;
+  opacity: 0.72;
+}
+
+.badge {
+  width: fit-content;
+  margin: 8px 0 0;
+  padding: 2px 7px;
+  background: var(--warn);
+  color: var(--foam);
+  font-weight: 700;
+}
+
+.badge.hidden,
+.note:empty {
+  display: none;
+}
+
+.note {
+  margin: 6px 0 0;
+  color: var(--shout);
+}
+
+.logs {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  min-height: 0;
+  flex: 1;
+  overflow: auto;
+}
+
+.logs li {
+  padding: 6px 0;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  font-variant-numeric: tabular-nums;
+}
+
+.logs li[data-action="flap"] b {
+  color: var(--shout);
+}
+
+.logs li[data-action="noop"] b {
+  color: var(--noop);
+}
+
+.dirt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 22px;
+  padding: 10px 22px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--dirt) 0 16px,
+      var(--dirt-edge) 16px 18px
+    );
+  border-top: 4px solid var(--dirt-edge);
+}
+
+.controls,
+.player {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.controls {
+  gap: 8px;
+}
+
+button {
+  font: 700 0.95rem "Atkinson Hyperlegible", sans-serif;
+  padding: 8px 14px;
+  border: 2px solid var(--ink);
+  background: var(--bird);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+button.quiet {
+  background: transparent;
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(1.06);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+button:focus-visible,
+input:focus-visible,
+.seg:has(input:focus-visible) {
+  outline: 3px solid var(--shout);
+  outline-offset: 2px;
+}
+
+.player {
+  border: 2px solid var(--ink);
+}
+
+.seg {
+  display: grid;
+}
+
+.seg input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.seg span {
+  display: block;
+  padding: 7px 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.seg:has(input:checked) span {
+  background: var(--ink);
+  color: var(--foam);
+}
+
+.opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 800px) {
+  main {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 52vh) minmax(0, 1fr);
+    gap: 14px;
+    padding-inline: 14px;
+  }
+
+  .stage {
+    justify-self: center;
+    width: 100%;
+  }
+
+  .callout {
+    padding-top: 4px;
+  }
+
+  .physics {
+    display: none;
+  }
+
+  .opt {
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yell.slam {
+    animation: none;
+  }
+}

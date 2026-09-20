@@ -2,8 +2,7 @@
 
 import json
 
-from backend.game import make_env
-from backend.state import info_score, observation_to_state
+from backend.engine import info_score, make_env, observation_to_state
 
 
 def main() -> None:

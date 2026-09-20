@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jev Playing Flipping Birds</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lilita+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="sky">
+      <header>
+        <h1>Jev Playing Flipping Birds</h1>
+        <p>Watch Jev flap or wait, then hear the call.</p>
+      </header>
+
+      <main>
+        <section class="stage">
+          <div class="pipe-lip"></div>
+          <div class="viewport">
+            <canvas id="game" width="288" height="512" aria-label="Live Flappy Bird frame"></canvas>
+            <div id="overlay" class="overlay">
+              <p>Start to fly</p>
+            </div>
+          </div>
+          <div class="pipe-lip"></div>
+        </section>
+
+        <aside class="callout">
+          <p id="score" class="score">0</p>
+          <p id="action" class="yell" aria-live="polite">ready</p>
+          <div class="meters">
+            <div>
+              <span>Flap</span>
+              <div class="track"><i id="p-flap"></i></div>
+              <b id="p-flap-n">—</b>
+            </div>
+            <div>
+              <span>Noop</span>
+              <div class="track"><i id="p-noop"></i></div>
+              <b id="p-noop-n">—</b>
+            </div>
+          </div>
+          <p class="physics">One flap: up 9px now, 45px if it finishes the rise. World closes 4px each step. The bird never moves in x.</p>
+          <p id="meta" class="meta">Waiting for the first call.</p>
+          <p id="badge" class="badge hidden">Fallback</p>
+          <p id="note" class="note"></p>
+          <ol id="logs" class="logs"></ol>
+        </aside>
+      </main>
+
+      <footer class="dirt">
+        <div class="controls">
+          <button id="start" type="button">Start</button>
+          <button id="pause" type="button" class="quiet" disabled>Pause</button>
+          <button id="reset" type="button" class="quiet">Reset</button>
+        </div>
+        <div class="player" role="radiogroup" aria-label="Who plays">
+          <label class="seg">
+            <input type="radio" name="agent" value="jev" checked />
+            <span>Jev</span>
+          </label>
+          <label class="seg">
+            <input type="radio" name="agent" value="heuristic" />
+            <span>Heuristic</span>
+          </label>
+          <label class="seg">
+            <input type="radio" name="agent" value="random" />
+            <span>Random</span>
+          </label>
+        </div>
+        <label class="opt"><input id="fallback" type="checkbox" checked /> Use heuristic if Jev misses</label>
+        <label class="opt"><input id="shout" type="checkbox" checked /> Shout each call</label>
+      </footer>
+    </div>
+    <script src="/app.js"></script>
+  </body>
+</html>

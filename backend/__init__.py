@@ -1,1 +1,1 @@
-# Game server package. Modules land here in later goals.
+"""Jev Playing Flipping Birds: engine, agent, server, and smoke subpackages."""
