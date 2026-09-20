@@ -4,7 +4,7 @@ Local demo: TypeSafe Jev plays Flappy Bird through `flappy-bird-gymnasium`. A br
 
 ![Live gameplay](docs/screenshots/gameplay.gif)
 
-Want to watch a full run, sound on, until the bird dies? [Watch Jev play live](docs/screenshots/jev-live-play.mov).
+Want to watch a full run, sound on, until the bird dies? [Watch Jev play live](docs/screenshots/jev-live-play.mp4).
 
 ## Setup
 
